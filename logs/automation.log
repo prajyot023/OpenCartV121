@@ -1,0 +1,278 @@
+16:18:25.802 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:18:26.035 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+16:18:26.783 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+16:18:26.786 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+16:18:27.426 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:18:27.507 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+16:18:27.912 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+16:18:27.947 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+16:18:28.124 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+16:18:28.125 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+16:18:28.817 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:18:29.093 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+16:18:29.398 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+16:18:29.466 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+16:18:29.630 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+16:18:29.630 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+16:18:30.683 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+16:18:30.698 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+16:36:26.322 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:36:27.632 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:36:28.549 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:36:36.373 [TestNG-tests-1] ERROR tastCases.TC001_AccountRegistrationTest - Test failed due to exception: 
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[normalize-space()='My Account']"}
+  (Session info: chrome=131.0.6778.205)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [61e3db5337b62d916439e48e2fea727c, findElement {using=xpath, value=//span[normalize-space()='My Account']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 131.0.6778.205, chrome: {chromedriverVersion: 131.0.6778.204 (52183f9e99a..., userDataDir: C:\Users\prajyot\AppData\Lo...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:58410}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58410/devtoo..., se:cdpVersion: 131.0.6778.205, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 61e3db5337b62d916439e48e2fea727c
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68) ~[selenium-support-4.25.0.jar:?]
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38) ~[selenium-support-4.25.0.jar:?]
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source) ~[?:?]
+	at pageObjects.HomePage.ClickMyAccount(HomePage.java:32) ~[test-classes/:?]
+	at tastCases.TC001_AccountRegistrationTest.verify_Account_registration(TC001_AccountRegistrationTest.java:18) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597) ~[?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:794) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.TestRunner.run(TestRunner.java:596) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:28) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
+16:36:37.680 [TestNG-tests-2] ERROR tastCases.TC001_AccountRegistrationTest - Test failed due to exception: 
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//span[normalize-space()='My Account']"}
+  (Session info: MicrosoftEdge=131.0.2903.112)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [ec6a8c0ecc3c21bce0c8c20aded84d09, findElement {using=xpath, value=//span[normalize-space()='My Account']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 131.0.2903.112, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:58436}, msedge: {msedgedriverVersion: 131.0.2903.112 (16ab910a6e7..., userDataDir: C:\Users\prajyot\AppData\Lo...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:58436/devtoo..., se:cdpVersion: 131.0.2903.112, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ec6a8c0ecc3c21bce0c8c20aded84d09
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68) ~[selenium-support-4.25.0.jar:?]
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38) ~[selenium-support-4.25.0.jar:?]
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source) ~[?:?]
+	at pageObjects.HomePage.ClickMyAccount(HomePage.java:32) ~[test-classes/:?]
+	at tastCases.TC001_AccountRegistrationTest.verify_Account_registration(TC001_AccountRegistrationTest.java:18) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597) ~[?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:794) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.TestRunner.run(TestRunner.java:596) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:28) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
+16:36:38.566 [TestNG-tests-3] ERROR tastCases.TC001_AccountRegistrationTest - Test failed due to exception: 
+org.openqa.selenium.NoSuchElementException: Unable to locate element: //span[normalize-space()='My Account']
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.25.0', revision: '8a8aea2337'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '22.0.1'
+Driver info: org.openqa.selenium.firefox.FirefoxDriver
+Command: [1c4a207e-304e-406b-a9cb-f1e54c7eed1d, findElement {using=xpath, value=//span[normalize-space()='My Account']}]
+Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 133.0.3, moz:accessibilityChecks: false, moz:buildID: 20241209150345, moz:debuggerAddress: 127.0.0.1:19732, moz:geckodriverVersion: 0.35.0, moz:headless: false, moz:platformVersion: 10.0, moz:processID: 38780, moz:profile: C:\Users\prajyot\AppData\Lo..., moz:shutdownTimeout: 60000, moz:webdriverClick: true, moz:windowless: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://127.0.0.1:19732/devtoo..., se:cdpVersion: 85.0, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, userAgent: Mozilla/5.0 (Windows NT 10....}
+Session ID: 1c4a207e-304e-406b-a9cb-f1e54c7eed1d
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
+	at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:368) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:362) ~[selenium-remote-driver-4.25.0.jar:?]
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68) ~[selenium-support-4.25.0.jar:?]
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38) ~[selenium-support-4.25.0.jar:?]
+	at jdk.proxy2/jdk.proxy2.$Proxy29.click(Unknown Source) ~[?:?]
+	at pageObjects.HomePage.ClickMyAccount(HomePage.java:32) ~[test-classes/:?]
+	at tastCases.TC001_AccountRegistrationTest.verify_Account_registration(TC001_AccountRegistrationTest.java:18) ~[test-classes/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[?:?]
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597) ~[?:?]
+	at org.testng.TestRunner.privateRun(TestRunner.java:794) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.TestRunner.run(TestRunner.java:596) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner.access$000(SuiteRunner.java:28) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.SuiteRunner$SuiteWorker.run(SuiteRunner.java:418) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at org.testng.internal.thread.ThreadUtil.lambda$execute$0(ThreadUtil.java:64) ~[org.testng_7.4.0.r202105021533.jar:7.4.0]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144) ~[?:?]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642) ~[?:?]
+	at java.base/java.lang.Thread.run(Thread.java:1570) [?:?]
+16:39:20.139 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:39:20.343 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+16:39:21.041 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+16:39:21.043 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+16:39:21.790 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:39:21.871 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+16:39:22.222 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+16:39:22.261 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+16:39:22.478 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+16:39:22.478 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+16:39:23.382 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+16:39:23.635 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+16:39:23.715 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+16:39:23.741 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+16:39:24.337 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+16:39:24.338 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+16:39:25.477 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+16:39:25.496 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+17:45:20.897 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+17:45:21.013 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+17:45:22.084 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+17:45:22.086 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+17:45:22.928 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+17:45:23.185 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+17:45:24.158 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+17:45:24.186 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+17:45:28.231 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+17:45:28.232 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+17:45:29.896 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+17:45:29.911 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+17:45:30.501 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+17:45:30.569 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+17:45:32.209 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+17:45:32.210 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+17:45:33.437 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+17:45:33.458 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+17:48:22.282 [main] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+17:48:22.364 [main] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+17:48:23.986 [main] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+17:48:23.989 [main] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+17:48:25.183 [main] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+17:48:25.213 [main] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+17:48:28.045 [main] INFO  tastCases.TC002_LoginTest - ***** Stsrting TC002_LoginTest *****
+17:51:26.549 [main] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+17:51:26.626 [main] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+17:51:33.901 [main] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+17:51:33.904 [main] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+17:51:36.316 [main] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+17:51:36.352 [main] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+17:51:44.394 [main] INFO  tastCases.TC002_LoginTest - ***** Stsrting TC002_LoginTest *****
+17:55:00.050 [main] INFO  tastCases.TC002_LoginTest - ***** Stsrting TC002_LoginTest *****
+17:58:48.305 [main] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+17:58:48.387 [main] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+17:58:48.678 [main] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+17:58:49.505 [main] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+18:00:43.062 [main] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+18:00:43.149 [main] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+18:00:43.504 [main] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+18:00:44.433 [main] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+18:03:28.308 [main] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+18:03:28.395 [main] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+18:03:31.938 [main] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+18:03:33.346 [main] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+18:03:33.376 [main] INFO  tastCases.TC002_LoginTest - ***** Finished TC002_LoginTest *****
+18:04:10.171 [main] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+18:04:10.249 [main] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+18:04:12.388 [main] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+18:04:12.390 [main] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+18:04:13.746 [main] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+18:04:13.791 [main] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+18:04:21.737 [main] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+18:04:21.796 [main] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+18:04:22.084 [main] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+18:04:23.058 [main] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+18:04:23.089 [main] INFO  tastCases.TC002_LoginTest - ***** Finished TC002_LoginTest *****
+12:23:49.078 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+12:23:49.239 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+12:23:49.852 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+12:23:49.858 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+12:23:49.889 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+12:23:50.025 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+12:23:50.521 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+12:23:50.522 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+12:23:51.097 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+12:23:51.142 [TestNG-tests-1] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+12:23:51.229 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Starting TC001_AccountRegistrationTest *****
+12:23:51.491 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on MyAccount link
+12:23:51.779 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+12:23:51.805 [TestNG-tests-2] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+12:23:51.977 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Clicked on Register link
+12:23:51.978 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Providing customer details.....
+12:23:53.253 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - Validating expected message...
+12:23:53.271 [TestNG-tests-3] INFO  tastCases.TC001_AccountRegistrationTest - ***** Finished TC001_AccountRegistrationTest ***** 
+12:23:53.736 [TestNG-tests-1] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+12:23:53.821 [TestNG-tests-1] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+12:23:54.112 [TestNG-tests-1] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+12:23:54.802 [TestNG-tests-1] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+12:23:54.859 [TestNG-tests-1] INFO  tastCases.TC002_LoginTest - ***** Finished TC002_LoginTest *****
+12:23:56.814 [TestNG-tests-2] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+12:23:56.896 [TestNG-tests-2] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+12:23:57.195 [TestNG-tests-2] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+12:23:57.973 [TestNG-tests-2] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+12:23:58.017 [TestNG-tests-2] INFO  tastCases.TC002_LoginTest - ***** Finished TC002_LoginTest *****
+12:23:58.896 [TestNG-tests-3] INFO  tastCases.TC002_LoginTest - ***** Starting TC002_LoginTest *****
+12:23:59.138 [TestNG-tests-3] INFO  tastCases.TC002_LoginTest - Clicked on My Account link.
+12:23:59.351 [TestNG-tests-3] INFO  tastCases.TC002_LoginTest - Clicked on Login link.
+12:24:00.036 [TestNG-tests-3] INFO  tastCases.TC002_LoginTest - Entered credentials and clicked login.
+12:24:00.052 [TestNG-tests-3] INFO  tastCases.TC002_LoginTest - ***** Finished TC002_LoginTest *****

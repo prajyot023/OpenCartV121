@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="tests" name="firefoxTestCase(failed)">
+    <parameter name="OS" value="Windows"/>
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="tastCases.TC001_AccountRegistrationTest">
+        <methods>
+          <include name="verify_account_registration"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- tastCases.TC001_AccountRegistrationTest -->
+    </classes>
+  </test> <!-- firefoxTestCase(failed) -->
+</suite> <!-- Failed suite [Suite] -->
