@@ -20,7 +20,7 @@
     <classes>
      	<class name="tastCases.TC001_AccountRegistrationTest"/> 
      	<class name="tastCases.TC002_LoginTest"/> 
-      <!-- <class name="tastCases.TC003_LoginDDT"/>-->
+       <!--<class name="tastCases.TC003_LoginDDT"/> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
