@@ -1,0 +1,34 @@
+{
+  "name": "opencart-playwright-ts",
+  "version": "1.0.0",
+  "description": "OpenCart E2E Test Automation Framework with Playwright, TypeScript, and Page Object Model",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed --project=chromium",
+    "test:headed:all": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:debug": "playwright test --debug",
+    "report": "playwright show-report",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "playwright",
+    "typescript",
+    "pom",
+    "page-object-model",
+    "opencart",
+    "automation",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^22.0.0",
+    "dotenv": "^16.4.7",
+    "typescript": "^5.7.0"
+  }
+}

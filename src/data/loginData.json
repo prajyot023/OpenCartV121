@@ -1,0 +1,32 @@
+[
+  {
+    "description": "Valid Credentials",
+    "email": "mohanraj@gmail.com",
+    "password": "test@123",
+    "expected": "Valid"
+  },
+  {
+    "description": "Valid user 2",
+    "email": "lakshmi@yahoo.com",
+    "password": "Laxmi ",
+    "expected": "Valid"
+  },
+  {
+    "description": "Invalid password",
+    "email": "laksh@yahoo.com",
+    "password": "WrongPassword_999",
+    "expected": "Invalid"
+  },
+  {
+    "description": "Unregistered email",
+    "email": "laks@yahoo.com",
+    "password": "xyz",
+    "expected": "Invalid"
+  },
+  {
+    "description": "Valid credentials 3",
+    "email": "abc123@gmail.com",
+    "password": "test@123",
+    "expected": "Valid"
+  }
+]
