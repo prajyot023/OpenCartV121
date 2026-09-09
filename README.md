@@ -1,20 +1,26 @@
 # opencart-playwright-ts-framework
 
-> Production-ready E2E Test Automation Framework for OpenCart built with Playwright, TypeScript, and Page Object Model (POM). Features multi-browser execution, DDT, custom fixtures, HTML reporting, and GitHub Actions CI/CD.
+[![Playwright Tests](https://github.com/prajyot023/opencart-playwright-ts-framework/actions/workflows/playwright.yml/badge.svg)](https://github.com/prajyot023/opencart-playwright-ts-framework/actions/workflows/playwright.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![Playwright](https://img.shields.io/badge/Playwright-1.50-green.svg?logo=playwright)](https://playwright.dev/)
+[![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
 
-Target Application: [TutorialsNinja OpenCart Demo Store](https://tutorialsninja.com/demo/index.php)
+> Production-ready End-to-End (E2E) Test Automation Framework for OpenCart built with **Playwright**, **TypeScript**, and **Page Object Model (POM)** design pattern. Features multi-browser execution, Data-Driven Testing (DDT), custom fixtures, HTML reporting, and GitHub Actions CI/CD pipeline.
+
+**Target Application**: [TutorialsNinja OpenCart Demo Store](https://tutorialsninja.com/demo/index.php)
 
 ---
 
 ## 🚀 Key Features
 
-- **Page Object Model (POM)**: Complete separation of page locators, actions, and test logic across dedicated page classes.
-- **Dependency Injection via Fixtures**: Automatically instantiated page objects via custom Playwright test fixtures (`{ homePage, loginPage, registerPage, myAccountPage, searchPage, cartPage, checkoutPage, productPage }`).
-- **Data-Driven Testing (DDT)**: Parameterized tests driven by external JSON datasets (`src/data/loginData.json`).
-- **Dynamic Data Generation**: Built-in test data generator utility (`DataGenerator`) replacing Apache Commons RandomStringUtils for unique registrations and passwords.
-- **Cross-Browser Testing**: Pre-configured support for Chromium, Firefox, and WebKit (Safari).
-- **Rich Reporting & Diagnostics**: Built-in HTML reports, automatic failure screenshots, video recordings, and Playwright Trace viewer.
-- **Parallel Execution**: Isolated browser contexts running tests concurrently with high throughput.
+- **Page Object Model (POM)**: Complete architectural separation of locators, actions, and assertions across modular page classes.
+- **Dependency Injection via Fixtures**: Playwright custom fixtures (`testFixtures.ts`) automatically initialize and inject page objects into test suites with isolated browser contexts.
+- **Data-Driven Testing (DDT)**: Parameterized test runs powered by external JSON datasets (`src/data/loginData.json`) for positive and negative scenario validation.
+- **Dynamic Data Generation**: In-house `DataGenerator` utility replacing external dependencies to produce randomized unique customer records (names, emails, phone numbers, passwords).
+- **Cross-Browser & Parallel Testing**: Multi-browser support configured for Chromium, Firefox, and WebKit (Safari), running parallel test workers for high throughput.
+- **Resilient Locators & Auto-Waiting**: Utilizes Playwright's role-based, CSS, and XPath locators with automatic waiting, eliminating arbitrary sleep statements.
+- **Rich Diagnostics & Reporting**: Built-in HTML reports, automatic failure screenshots, video recordings, and Playwright Trace Viewer integration for rapid debugging.
+- **CI/CD Automation**: Fully configured GitHub Actions workflow (`.github/workflows/playwright.yml`) that triggers on push and pull requests with report artifact uploads.
 
 ---
 
@@ -22,58 +28,98 @@ Target Application: [TutorialsNinja OpenCart Demo Store](https://tutorialsninja.
 
 ```
 opencart-playwright-ts-framework/
-├── package.json                         # Dependencies and test execution scripts
-├── tsconfig.json                        # TypeScript configuration
-├── playwright.config.ts                 # Playwright test configuration
-├── .env                                 # Environment variables (Base URL, test credentials)
-├── .env.example                         # Template environment variables
-├── .gitignore                           # Excluded artifacts
-│
+├── .github/
+│   └── workflows/
+│       ├── playwright.yml               # GitHub Actions CI workflow (multi-browser testing & reports)
+│       └── copilot-setup-steps.yml
 ├── src/
-│   ├── pages/                           # Page Object Model Layer
-│   │   ├── BasePage.ts                  # Shared page methods & navigation
-│   │   ├── HomePage.ts                  # Header, menus, search bar
-│   │   ├── AccountRegistrationPage.ts   # Registration form & confirmation
-│   │   ├── LoginPage.ts                 # Login form & alerts
-│   │   ├── MyAccountPage.ts             # Account dashboard & logout
-│   │   ├── SearchPage.ts                # Search results & filtering
-│   │   └── CartPage.ts                  # Shopping cart view & checkout
-│   │
+│   ├── data/
+│   │   └── loginData.json               # Data-driven test records (valid/invalid credentials)
 │   ├── fixtures/
-│   │   └── testFixtures.ts              # Playwright custom fixtures
-│   │
-│   ├── utils/
-│   │   └── dataGenerator.ts             # Dynamic test data generator
-│   │
-│   └── data/
-│       └── loginData.json               # Data-driven test records
-│
-└── tests/                               # Test Suites
-    ├── tc001-account-registration.spec.ts # TC001: Registration flow & validations
-    ├── tc002-login.spec.ts               # TC002: Login verification & logout
-    ├── tc003-login-ddt.spec.ts           # TC003: Data-driven login verification
-    ├── tc004-search.spec.ts              # TC004: Product search (positive & negative)
-    ├── tc005-cart.spec.ts                # TC005: Add to cart & cart content check
-    ├── tc006-currency-navigation.spec.ts # TC006: Currency switching & header checks
-    └── tc007-checkout.spec.ts            # TC007: Multi-step checkout & order placement
+│   │   └── testFixtures.ts              # Playwright custom fixtures & page dependency injection
+│   ├── pages/                           # Page Object Model Layer
+│   │   ├── BasePage.ts                  # Base class with shared actions, timeouts & navigation
+│   │   ├── HomePage.ts                  # Header, navigation bar, search box & currency selector
+│   │   ├── AccountRegistrationPage.ts   # Registration form fields, privacy policy & confirmation
+│   │   ├── LoginPage.ts                 # Returning customer login form, password reset & error alerts
+│   │   ├── MyAccountPage.ts             # Account dashboard verification & logout functionality
+│   │   ├── SearchPage.ts                # Search results, product grid, sorting & add-to-cart
+│   │   ├── ProductPage.ts               # Product details page, quantity inputs & add-to-cart
+│   │   ├── CartPage.ts                  # Cart table, quantity update, item removal & checkout button
+│   │   └── CheckoutPage.ts              # Multi-step accordion checkout (Billing, Delivery, Payment, Confirm)
+│   └── utils/
+│       └── dataGenerator.ts             # Dynamic test data generator (random strings, emails, numbers)
+├── tests/                               # Test Suites
+│   ├── e2e-order-flow.spec.ts           # Full E2E customer journey (Register -> Search -> Cart -> Checkout -> Logout)
+│   ├── tc001-account-registration.spec.ts # TC001: User registration flow & success message validation
+│   ├── tc002-login.spec.ts               # TC002: Login verification with valid credentials & logout
+│   ├── tc003-login-ddt.spec.ts           # TC003: Data-driven login verification with multiple datasets
+│   ├── tc004-search.spec.ts              # TC004: Product search (existing & non-existing items)
+│   ├── tc005-cart.spec.ts                # TC005: Add to cart, view cart, quantity update & item removal
+│   ├── tc006-currency-navigation.spec.ts # TC006: Currency switching (EUR, GBP, USD) & header verification
+│   └── tc007-checkout.spec.ts            # TC007: Multi-step checkout, guest/registered flow & order placement
+├── .env                                 # Local environment variables (BASE_URL, credentials)
+├── .env.example                         # Environment configuration template
+├── .gitignore                           # Git ignore definitions
+├── package.json                         # Node.js project manifest & execution scripts
+├── playwright.config.ts                 # Playwright test configuration & browser definitions
+└── tsconfig.json                        # TypeScript compiler configuration
 ```
+
+---
+
+## 🧩 Page Object Model (POM) Architecture
+
+| Page Object | File Path | Responsibilities |
+|:---|:---|:---|
+| **BasePage** | `src/pages/BasePage.ts` | Base abstraction providing common methods: navigation, waiting, title retrieval, and URL verification. |
+| **HomePage** | `src/pages/HomePage.ts` | Header dropdowns (My Account, Currency), search input box, cart quick-view button, navigation links. |
+| **AccountRegistrationPage** | `src/pages/AccountRegistrationPage.ts` | First name, last name, email, phone, password inputs, newsletter subscription, privacy policy checkbox, and account confirmation. |
+| **LoginPage** | `src/pages/LoginPage.ts` | Returning customer login form, email/password inputs, forgotten password link, and warning alert verification. |
+| **MyAccountPage** | `src/pages/MyAccountPage.ts` | Account dashboard header checks, account edit links, and customer logout execution. |
+| **SearchPage** | `src/pages/SearchPage.ts` | Product search verification, search results count, product name matching, and direct add-to-cart button. |
+| **ProductPage** | `src/pages/ProductPage.ts` | Product detail view, quantity specification, direct add-to-cart, and success alert verification. |
+| **CartPage** | `src/pages/CartPage.ts` | Shopping cart table, product row verification, quantity modifications, item removal, empty cart detection, and checkout transition. |
+| **CheckoutPage** | `src/pages/CheckoutPage.ts` | Multi-step accordion checkout handling: Step 1 (Checkout options), Step 2 (Billing Details), Step 3 (Delivery Details), Step 4 (Delivery Method), Step 5 (Payment Method), Step 6 (Confirm Order & Success Page). |
+
+---
+
+## 🧪 Test Suites Overview
+
+| Suite | File Path | Description |
+|:---|:---|:---|
+| **E2E Order Flow** | `tests/e2e-order-flow.spec.ts` | Complete customer journey: Registers a fresh account -> verifies dashboard -> searches for product -> adds item to cart -> verifies cart -> navigates to checkout -> logs out. |
+| **TC001: Registration** | `tests/tc001-account-registration.spec.ts` | Validates registration form submission with dynamically generated customer details and asserts "Your Account Has Been Created!". |
+| **TC002: Login** | `tests/tc002-login.spec.ts` | Verifies login with valid credentials, verifies the account dashboard presence, and performs a clean logout. |
+| **TC003: Login DDT** | `tests/tc003-login-ddt.spec.ts` | Parameterized data-driven login tests reading from `loginData.json` testing valid and invalid credential combinations. |
+| **TC004: Search** | `tests/tc004-search.spec.ts` | Validates search with existing product (`iPhone`) and non-existing product, checking product presence and error messages. |
+| **TC005: Shopping Cart** | `tests/tc005-cart.spec.ts` | Adds products to shopping cart, verifies item presence, updates quantities, removes products, and verifies empty cart state. |
+| **TC006: Currency Navigation** | `tests/tc006-currency-navigation.spec.ts` | Switches currency across Euro (€), Pound Sterling (£), and US Dollar ($), asserting currency symbol updates on prices. |
+| **TC007: Checkout Suite** | `tests/tc007-checkout.spec.ts` | Validates Step 1 checkout options (Guest/Register/Login) and executes complete multi-step checkout through to order confirmation. |
 
 ---
 
 ## 🛠️ Getting Started
 
 ### 1. Prerequisites
-- **Node.js**: v18.0.0 or higher (v26+ supported)
+- **Node.js**: v18.0.0 or higher
 - **NPM**: v9.0.0 or higher
 
 ### 2. Installation
 ```bash
+# Clone repository
+git clone https://github.com/prajyot023/opencart-playwright-ts-framework.git
+cd opencart-playwright-ts-framework
+
+# Install dependencies
 npm install
+
+# Install Playwright browser binaries
 npx playwright install chromium
 ```
 
-### 3. Environment Setup
-The `.env` file contains default configurations:
+### 3. Environment Configuration
+Create a `.env` file in the root directory (or copy from `.env.example`):
 ```ini
 BASE_URL=https://tutorialsninja.com/demo/index.php
 USER_EMAIL=mohanraj@gmail.com
@@ -83,60 +129,94 @@ SEARCH_PRODUCT=iPhone
 
 ---
 
-## 🧪 Running Tests
+## 🏃 Running Tests
 
-### Run complete End-to-End flow in headed mode
+### End-to-End Journey (Headed Mode)
 ```bash
 npm run test:e2e
 ```
 
-### Run all tests (headless)
+### Run All Tests (Headless)
 ```bash
 npm test
 ```
 
-### Run tests in headed browser mode
+### Run Tests in Headed Browser Mode
 ```bash
 npm run test:headed
 ```
 
-### Run tests with interactive Playwright UI Mode
+### Run Tests with Interactive Playwright UI Mode
 ```bash
 npm run test:ui
 ```
 
-### Run specific browser projects
+### Run Across Specific Browsers
 ```bash
+# Chromium (Google Chrome / Edge)
 npm run test:chromium
+
+# Firefox
 npm run test:firefox
+
+# WebKit (Safari)
 npm run test:webkit
 ```
 
-### Run individual test suites
+### Run Individual Test Suites
 ```bash
+# TC001: Registration
 npx playwright test tests/tc001-account-registration.spec.ts
+
+# TC002: Login
 npx playwright test tests/tc002-login.spec.ts
+
+# TC003: Login Data-Driven Testing (DDT)
 npx playwright test tests/tc003-login-ddt.spec.ts
+
+# TC004: Product Search
 npx playwright test tests/tc004-search.spec.ts
+
+# TC005: Shopping Cart
 npx playwright test tests/tc005-cart.spec.ts
+
+# TC006: Currency & Navigation
+npx playwright test tests/tc006-currency-navigation.spec.ts
+
+# TC007: Multi-Step Checkout
+npx playwright test tests/tc007-checkout.spec.ts
+
+# Complete E2E Order Journey
+npx playwright test tests/e2e-order-flow.spec.ts
 ```
 
-### Run type checking
+### TypeScript Type Checking
 ```bash
 npm run typecheck
 ```
 
 ---
 
-## 📊 Viewing Test Reports & Traces
+## 📊 Viewing Test Reports & Diagnostics
 
-### HTML Report
-After running tests, view the comprehensive HTML test report:
+### HTML Test Report
+After test execution, launch the interactive Playwright HTML report:
 ```bash
 npm run report
 ```
 
-### Inspect Trace on Failure
+### Trace Viewer (Debugging Test Runs)
+When a test fails, Playwright automatically generates a trace recording. Inspect the full DOM snapshot and network timeline:
 ```bash
-npx playwright show-trace test-results/.../trace.zip
+npx playwright show-trace test-results/<test-run-folder>/trace.zip
 ```
+
+---
+
+## 🤖 CI/CD Integration
+
+The repository includes an automated GitHub Actions pipeline configured in `.github/workflows/playwright.yml`:
+- Runs automatically on every `push` and `pull_request` to `master` and `main` branches.
+- Sets up Node.js with caching, installs dependencies via `npm ci`, and installs required browser binaries.
+- Executes tests with `npx playwright test --project=chromium`.
+- Archives and uploads the `playwright-report/` artifact on build completion (retained for 30 days).
