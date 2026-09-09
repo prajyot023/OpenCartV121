@@ -47,7 +47,7 @@ export class SearchPage extends BasePage {
    * Checks if a product with the specified name exists in search results
    */
   async isProductDisplayed(productName: string): Promise<boolean> {
-    const product = this.page.locator(`.product-thumb h4 a:has-text("${productName}")`);
+    const product = this.page.locator('.product-thumb h4 a').filter({ hasText: productName }).first();
     try {
       await product.waitFor({ state: 'visible', timeout: 5000 });
       return await product.isVisible();

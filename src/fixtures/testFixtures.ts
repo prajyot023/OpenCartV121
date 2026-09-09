@@ -5,6 +5,8 @@ import { AccountRegistrationPage } from '../pages/AccountRegistrationPage';
 import { MyAccountPage } from '../pages/MyAccountPage';
 import { SearchPage } from '../pages/SearchPage';
 import { CartPage } from '../pages/CartPage';
+import { CheckoutPage } from '../pages/CheckoutPage';
+import { ProductPage } from '../pages/ProductPage';
 
 type CustomFixtures = {
   homePage: HomePage;
@@ -13,6 +15,8 @@ type CustomFixtures = {
   myAccountPage: MyAccountPage;
   searchPage: SearchPage;
   cartPage: CartPage;
+  checkoutPage: CheckoutPage;
+  productPage: ProductPage;
 };
 
 export const test = baseTest.extend<CustomFixtures>({
@@ -44,6 +48,16 @@ export const test = baseTest.extend<CustomFixtures>({
   cartPage: async ({ page }, use) => {
     const cartPage = new CartPage(page);
     await use(cartPage);
+  },
+
+  checkoutPage: async ({ page }, use) => {
+    const checkoutPage = new CheckoutPage(page);
+    await use(checkoutPage);
+  },
+
+  productPage: async ({ page }, use) => {
+    const productPage = new ProductPage(page);
+    await use(productPage);
   },
 });
 

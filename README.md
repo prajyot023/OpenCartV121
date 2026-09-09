@@ -1,13 +1,15 @@
-# OpenCart Test Automation Framework (Playwright + TypeScript + POM)
+# opencart-playwright-ts-framework
 
-A modern, fast, and scalable end-to-end test automation framework built with **Playwright**, **TypeScript**, and the **Page Object Model (POM)** pattern for testing the OpenCart platform ([TutorialsNinja OpenCart Demo](https://tutorialsninja.com/demo/index.php)).
+> Production-ready E2E Test Automation Framework for OpenCart built with Playwright, TypeScript, and Page Object Model (POM). Features multi-browser execution, DDT, custom fixtures, HTML reporting, and GitHub Actions CI/CD.
+
+Target Application: [TutorialsNinja OpenCart Demo Store](https://tutorialsninja.com/demo/index.php)
 
 ---
 
 ## 🚀 Key Features
 
 - **Page Object Model (POM)**: Complete separation of page locators, actions, and test logic across dedicated page classes.
-- **Dependency Injection via Fixtures**: Automatically instantiated page objects via custom Playwright test fixtures (`{ homePage, loginPage, registerPage, myAccountPage, searchPage, cartPage }`).
+- **Dependency Injection via Fixtures**: Automatically instantiated page objects via custom Playwright test fixtures (`{ homePage, loginPage, registerPage, myAccountPage, searchPage, cartPage, checkoutPage, productPage }`).
 - **Data-Driven Testing (DDT)**: Parameterized tests driven by external JSON datasets (`src/data/loginData.json`).
 - **Dynamic Data Generation**: Built-in test data generator utility (`DataGenerator`) replacing Apache Commons RandomStringUtils for unique registrations and passwords.
 - **Cross-Browser Testing**: Pre-configured support for Chromium, Firefox, and WebKit (Safari).
@@ -19,7 +21,7 @@ A modern, fast, and scalable end-to-end test automation framework built with **P
 ## 📁 Project Structure
 
 ```
-OpenCartV121/
+opencart-playwright-ts-framework/
 ├── package.json                         # Dependencies and test execution scripts
 ├── tsconfig.json                        # TypeScript configuration
 ├── playwright.config.ts                 # Playwright test configuration
@@ -51,7 +53,9 @@ OpenCartV121/
     ├── tc002-login.spec.ts               # TC002: Login verification & logout
     ├── tc003-login-ddt.spec.ts           # TC003: Data-driven login verification
     ├── tc004-search.spec.ts              # TC004: Product search (positive & negative)
-    └── tc005-cart.spec.ts                # TC005: Add to cart & cart content check
+    ├── tc005-cart.spec.ts                # TC005: Add to cart & cart content check
+    ├── tc006-currency-navigation.spec.ts # TC006: Currency switching & header checks
+    └── tc007-checkout.spec.ts            # TC007: Multi-step checkout & order placement
 ```
 
 ---
@@ -80,6 +84,11 @@ SEARCH_PRODUCT=iPhone
 ---
 
 ## 🧪 Running Tests
+
+### Run complete End-to-End flow in headed mode
+```bash
+npm run test:e2e
+```
 
 ### Run all tests (headless)
 ```bash

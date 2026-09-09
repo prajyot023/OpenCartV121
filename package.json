@@ -1,9 +1,10 @@
 {
-  "name": "opencart-playwright-ts",
+  "name": "opencart-playwright-ts-framework",
   "version": "1.0.0",
-  "description": "OpenCart E2E Test Automation Framework with Playwright, TypeScript, and Page Object Model",
+  "description": "Production-ready E2E Test Automation Framework for OpenCart built with Playwright, TypeScript, and Page Object Model (POM). Features multi-browser execution, DDT, custom fixtures, HTML reporting, and GitHub Actions CI/CD.",
   "scripts": {
     "test": "playwright test",
+    "test:e2e": "playwright test tests/e2e-order-flow.spec.ts --headed --project=chromium",
     "test:headed": "playwright test --headed --project=chromium",
     "test:headed:all": "playwright test --headed",
     "test:ui": "playwright test --ui",
