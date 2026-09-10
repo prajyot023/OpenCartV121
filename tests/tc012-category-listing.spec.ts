@@ -35,16 +35,14 @@ test.describe('TC012: Category & Listing Page Suite', () => {
     // Use a category with products, e.g. Laptops & Notebooks -> Show All (path=18)
     await categoryPage.open('18');
 
-    await categoryPage.switchToListView();
-    await page.waitForTimeout(500);
-
-    // In list view, products have class product-list
-    const listItems = page.locator('.product-layout.product-list');
-    // Products should be visible (if any products exist in the category)
     const totalProducts = await categoryPage.getProductCount();
-    if (totalProducts > 0) {
-      expect(await listItems.count()).toBeGreaterThanOrEqual(1);
-    }
+    test.skip(totalProducts === 0, 'Category has no products to lay out');
+
+    await categoryPage.switchToListView();
+
+    // In list view every card carries the product-list class. Assert with toHaveCount so
+    // this retries until the class swap lands instead of racing a fixed sleep.
+    await expect(page.locator('.product-layout.product-list')).toHaveCount(totalProducts);
   });
 
   test('should switch to grid view and verify layout change', async ({
@@ -53,18 +51,15 @@ test.describe('TC012: Category & Listing Page Suite', () => {
   }) => {
     await categoryPage.open('18');
 
-    // Switch to list first, then grid
-    await categoryPage.switchToListView();
-    await page.waitForTimeout(300);
-    await categoryPage.switchToGridView();
-    await page.waitForTimeout(300);
-
-    // In grid view, products have class product-grid
-    const gridItems = page.locator('.product-layout.product-grid');
     const totalProducts = await categoryPage.getProductCount();
-    if (totalProducts > 0) {
-      expect(await gridItems.count()).toBeGreaterThanOrEqual(1);
-    }
+    test.skip(totalProducts === 0, 'Category has no products to lay out');
+
+    // Switch to list first, then back to grid
+    await categoryPage.switchToListView();
+    await expect(page.locator('.product-layout.product-list')).toHaveCount(totalProducts);
+
+    await categoryPage.switchToGridView();
+    await expect(page.locator('.product-layout.product-grid')).toHaveCount(totalProducts);
   });
 
   test('should sort products by Name (A - Z) via Sort By dropdown', async ({
@@ -75,17 +70,15 @@ test.describe('TC012: Category & Listing Page Suite', () => {
 
     const initialNames = await categoryPage.getProductNames();
 
-    // Sort by Name A-Z
-    await categoryPage.sortBy('https://tutorialsninja.com/demo/index.php?route=product/category&path=24&sort=pd.name&order=ASC');
+    // Sort by Name A-Z. Select by label, not by the option's value: those values are
+    // absolute URLs that would pin the suite to one host regardless of BASE_URL.
+    await categoryPage.sortBy('Name (A - Z)');
+    expect(categoryPage.getUrl()).toContain('sort=pd.name');
 
-    const sortedNames = await categoryPage.getProductNames();
-
-    if (sortedNames.length > 1) {
-      // Verify alphabetical order
-      for (let i = 0; i < sortedNames.length - 1; i++) {
-        expect(sortedNames[i].toLowerCase() <= sortedNames[i + 1].toLowerCase()).toBe(true);
-      }
-    }
+    const sortedNames = (await categoryPage.getProductNames()).map(n => n.trim().toLowerCase());
+    expect(sortedNames.length).toBe(initialNames.length);
+    expect(sortedNames.length).toBeGreaterThan(1);
+    expect(sortedNames).toEqual([...sortedNames].sort());
   });
 
   test('should display product compare link with correct count', async ({

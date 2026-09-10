@@ -38,9 +38,10 @@ test.describe('TC015: Contact Us Suite', () => {
       'This is a test enquiry message submitted via automated testing. Please disregard this message.'
     );
 
-    // Verify success page is shown
+    // A valid submit lands on route=information/contact/success
     const isSuccess = await contactPage.isSuccessMessageDisplayed();
     expect(isSuccess).toBe(true);
+    expect(contactPage.getUrl()).toContain('route=information/contact/success');
   });
 
   test('should show validation errors when submitting empty contact form', async ({
@@ -51,9 +52,10 @@ test.describe('TC015: Contact Us Suite', () => {
     // Submit empty form
     await contactPage.submitButton.click();
 
-    // Verify field validation errors appear
-    const errorCount = await contactPage.getValidationErrorCount();
-    expect(errorCount).toBeGreaterThan(0);
+    // The form posts and re-renders with the field errors, so wait for the first one
+    // instead of counting before the round trip has landed.
+    await expect(contactPage.fieldErrors.first()).toBeVisible();
+    expect(await contactPage.getValidationErrorCount()).toBeGreaterThan(0);
   });
 
   test('should show validation error for invalid email format', async ({
@@ -67,15 +69,10 @@ test.describe('TC015: Contact Us Suite', () => {
     await contactPage.enquiryTextarea.fill('This is a test enquiry that is long enough to pass validation checks.');
 
     await contactPage.submitButton.click();
-
-    // Should show validation error or HTML5 validation will prevent submission
-    // Check if still on contact page (form not submitted successfully)
     await page.waitForTimeout(1000);
-    const currentUrl = page.url();
-    // Either stays on contact page due to validation or shows error
-    expect(
-      currentUrl.includes('route=information/contact') ||
-      await contactPage.getValidationErrorCount() > 0
-    ).toBe(true);
+
+    // An invalid address must not reach the success page. The old assertion allowed any
+    // URL containing 'route=information/contact', which the success page also matches.
+    expect(page.url()).not.toContain('route=information/contact/success');
   });
 });

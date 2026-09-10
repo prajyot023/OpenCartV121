@@ -82,10 +82,14 @@ export class SpecialsPage extends BasePage {
   }
 
   /**
-   * Change sort order
+   * Change sort order via dropdown, e.g. 'Name (A - Z)'.
+   *
+   * The option values are full URLs assigned to `location`, so wait for that navigation.
    */
-  async sortBy(value: string): Promise<void> {
-    await this.sortByDropdown.selectOption(value);
-    await this.page.waitForLoadState('domcontentloaded');
+  async sortBy(label: string): Promise<void> {
+    await Promise.all([
+      this.page.waitForURL(/[?&]sort=/, { timeout: 30000 }),
+      this.sortByDropdown.selectOption({ label }),
+    ]);
   }
 }

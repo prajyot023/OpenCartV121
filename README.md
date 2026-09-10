@@ -44,9 +44,17 @@ opencart-playwright-ts-framework/
 │   │   ├── LoginPage.ts                 # Returning customer login form, password reset & error alerts
 │   │   ├── MyAccountPage.ts             # Account dashboard verification & logout functionality
 │   │   ├── SearchPage.ts                # Search results, product grid, sorting & add-to-cart
-│   │   ├── ProductPage.ts               # Product details page, quantity inputs & add-to-cart
+│   │   ├── ProductPage.ts               # Product details page, quantity inputs, reviews & add-to-cart
 │   │   ├── CartPage.ts                  # Cart table, quantity update, item removal & checkout button
-│   │   └── CheckoutPage.ts              # Multi-step accordion checkout (Billing, Delivery, Payment, Confirm)
+│   │   ├── CheckoutPage.ts              # Multi-step accordion checkout (Billing, Delivery, Payment, Confirm)
+│   │   ├── CategoryPage.ts              # Category listing, breadcrumbs, list/grid view, sorting & paging
+│   │   ├── SpecialsPage.ts              # Special offers listing, old/new prices & add-to-cart
+│   │   ├── ComparePage.ts               # Product comparison table, removal & add-to-cart
+│   │   ├── WishlistPage.ts              # Wishlist table, item removal & add-to-cart
+│   │   ├── ContactPage.ts               # Store information panel & contact enquiry form
+│   │   ├── VoucherPage.ts               # Gift certificate purchase form, themes & terms agreement
+│   │   ├── ReturnsPage.ts               # Product return request form, reasons & validation
+│   │   └── ForgotPasswordPage.ts        # Password reset request form & confirmation alerts
 │   └── utils/
 │       └── dataGenerator.ts             # Dynamic test data generator (random strings, emails, numbers)
 ├── tests/                               # Test Suites
@@ -57,7 +65,22 @@ opencart-playwright-ts-framework/
 │   ├── tc004-search.spec.ts              # TC004: Product search (existing & non-existing items)
 │   ├── tc005-cart.spec.ts                # TC005: Add to cart, view cart, quantity update & item removal
 │   ├── tc006-currency-navigation.spec.ts # TC006: Currency switching (EUR, GBP, USD) & header verification
-│   └── tc007-checkout.spec.ts            # TC007: Multi-step checkout, guest/registered flow & order placement
+│   ├── tc007-checkout.spec.ts            # TC007: Multi-step checkout, guest/registered flow & order placement
+│   ├── tc008-homepage.spec.ts            # TC008: Slideshow, featured products, footer & header links
+│   ├── tc009-navigation-menu.spec.ts     # TC009: Top navigation categories & sub-category dropdowns
+│   ├── tc010-product-detail.spec.ts      # TC010: Product tabs, images, quantity & add-to-cart
+│   ├── tc011-product-review.spec.ts      # TC011: Review submission & review form validation
+│   ├── tc012-category-listing.spec.ts    # TC012: Breadcrumbs, list/grid view, sorting & sub-categories
+│   ├── tc013-product-compare.spec.ts     # TC013: Add, view and remove products in the comparison table
+│   ├── tc014-wishlist.spec.ts            # TC014: Wishlist auth redirect, add, remove & add-to-cart
+│   ├── tc015-contact-us.spec.ts          # TC015: Store information, enquiry form & validation
+│   ├── tc016-specials.spec.ts            # TC016: Special offer prices, listing controls & add-to-cart
+│   ├── tc017-gift-voucher.spec.ts        # TC017: Gift certificate form, themes, terms & purchase
+│   ├── tc018-product-returns.spec.ts     # TC018: Return request form fields, reasons & submission
+│   ├── tc019-forgotten-password.spec.ts  # TC019: Password reset request for known & unknown emails
+│   ├── tc020-footer-links.spec.ts        # TC020: Information pages & footer column links
+│   ├── tc021-header-cart-preview.spec.ts # TC021: Header cart counter & cart preview dropdown
+│   └── tc022-account-management.spec.ts  # TC022: Account dashboard links, newsletter & order history
 ├── .env                                 # Local environment variables (BASE_URL, credentials)
 ├── .env.example                         # Environment configuration template
 ├── .gitignore                           # Git ignore definitions
@@ -81,6 +104,14 @@ opencart-playwright-ts-framework/
 | **ProductPage** | `src/pages/ProductPage.ts` | Product detail view, quantity specification, direct add-to-cart, and success alert verification. |
 | **CartPage** | `src/pages/CartPage.ts` | Shopping cart table, product row verification, quantity modifications, item removal, empty cart detection, and checkout transition. |
 | **CheckoutPage** | `src/pages/CheckoutPage.ts` | Multi-step accordion checkout handling: Step 1 (Checkout options), Step 2 (Billing Details), Step 3 (Delivery Details), Step 4 (Delivery Method), Step 5 (Payment Method), Step 6 (Confirm Order & Success Page). |
+| **CategoryPage** | `src/pages/CategoryPage.ts` | Category listing: breadcrumbs, sidebar categories, list/grid view toggles, sort and per-page dropdowns, compare and wishlist buttons. |
+| **SpecialsPage** | `src/pages/SpecialsPage.ts` | Special offers listing: product cards, old and new prices, view toggles, sorting, and add-to-cart. |
+| **ComparePage** | `src/pages/ComparePage.ts` | Product comparison table: compared product names, per-product removal, add-to-cart, and the empty-state message. |
+| **WishlistPage** | `src/pages/WishlistPage.ts` | Wishlist table: product names, item count, removal, add-to-cart, and the empty-state message. |
+| **ContactPage** | `src/pages/ContactPage.ts` | Store information panel, enquiry form fields, field-level validation, and success page detection. |
+| **VoucherPage** | `src/pages/VoucherPage.ts` | Gift certificate purchase: recipient and sender fields, themes, amount, terms agreement, and purchase confirmation. |
+| **ReturnsPage** | `src/pages/ReturnsPage.ts` | Product return request: order and product information fields, return reasons, opened state, and submission result. |
+| **ForgotPasswordPage** | `src/pages/ForgotPasswordPage.ts` | Password reset request form, confirmation alert, warning alert, and the back-to-login button. |
 
 ---
 
@@ -96,6 +127,21 @@ opencart-playwright-ts-framework/
 | **TC005: Shopping Cart** | `tests/tc005-cart.spec.ts` | Adds products to shopping cart, verifies item presence, updates quantities, removes products, and verifies empty cart state. |
 | **TC006: Currency Navigation** | `tests/tc006-currency-navigation.spec.ts` | Switches currency across Euro (€), Pound Sterling (£), and US Dollar ($), asserting currency symbol updates on prices. |
 | **TC007: Checkout Suite** | `tests/tc007-checkout.spec.ts` | Validates Step 1 checkout options (Guest/Register/Login) and executes complete multi-step checkout through to order confirmation. |
+| **TC008: Homepage** | `tests/tc008-homepage.spec.ts` | Verifies the slideshow, featured product cards and prices, brand carousel, footer columns, and top header links. |
+| **TC009: Navigation Menu** | `tests/tc009-navigation-menu.spec.ts` | Verifies top-level categories, sub-category dropdowns, and navigation into category pages. |
+| **TC010: Product Detail** | `tests/tc010-product-detail.spec.ts` | Verifies title, price, brand and availability, the Description/Specification/Reviews tabs, images, quantity, and add-to-cart. |
+| **TC011: Product Review** | `tests/tc011-product-review.spec.ts` | Submits a valid review and asserts validation for empty forms, short review text, and a missing rating. |
+| **TC012: Category Listing** | `tests/tc012-category-listing.spec.ts` | Verifies breadcrumbs, category headings, sidebar links, list/grid views, sorting, and sub-category listings. |
+| **TC013: Product Compare** | `tests/tc013-product-compare.spec.ts` | Adds products to the comparison table from a category page, verifies the table, and removes a product. |
+| **TC014: Wishlist** | `tests/tc014-wishlist.spec.ts` | Verifies the login redirect for anonymous users, then adds, removes, and carts wishlist items as a registered customer. |
+| **TC015: Contact Us** | `tests/tc015-contact-us.spec.ts` | Verifies store information, submits a valid enquiry to the success page, and asserts form validation. |
+| **TC016: Specials** | `tests/tc016-specials.spec.ts` | Verifies discounted pricing, listing controls, and adding a special offer to the cart. |
+| **TC017: Gift Voucher** | `tests/tc017-gift-voucher.spec.ts` | Verifies the gift certificate form and themes, asserts validation, and completes a purchase. |
+| **TC018: Product Returns** | `tests/tc018-product-returns.spec.ts` | Verifies the return request form fields and reasons, asserts validation, and submits a valid return. |
+| **TC019: Forgotten Password** | `tests/tc019-forgotten-password.spec.ts` | Requests a password reset for a registered and an unknown email, and verifies navigation to and from the login page. |
+| **TC020: Footer Links** | `tests/tc020-footer-links.spec.ts` | Loads the information pages (About Us, Delivery, Privacy, Terms) and verifies each footer column's links. |
+| **TC021: Header Cart Preview** | `tests/tc021-header-cart-preview.spec.ts` | Verifies the header cart counter and the cart preview dropdown contents, links, and empty state. |
+| **TC022: Account Management** | `tests/tc022-account-management.spec.ts` | Verifies the account dashboard links: edit account, change password, address book, order history, and newsletter. |
 
 ---
 
@@ -185,6 +231,9 @@ npx playwright test tests/tc006-currency-navigation.spec.ts
 
 # TC007: Multi-Step Checkout
 npx playwright test tests/tc007-checkout.spec.ts
+
+# Any other suite, by file name
+npx playwright test tests/tc016-specials.spec.ts
 
 # Complete E2E Order Journey
 npx playwright test tests/e2e-order-flow.spec.ts

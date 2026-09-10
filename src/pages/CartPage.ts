@@ -1,4 +1,4 @@
-import { Locator, Page } from '@playwright/test';
+import { expect, Locator, Page } from '@playwright/test';
 import { BasePage } from './BasePage';
 
 export class CartPage extends BasePage {
@@ -51,12 +51,18 @@ export class CartPage extends BasePage {
   }
 
   /**
-   * Remove all items from cart
+   * Remove all items from cart.
+   *
+   * Removing a row from the cart page triggers a full reload, so wait for the row count
+   * to drop rather than sleeping: a fixed pause races the reload and the next click can
+   * land on a page that is navigating away.
    */
   async clearCart(): Promise<void> {
-    while ((await this.removeButtons.count()) > 0) {
+    let remaining = await this.removeButtons.count();
+    while (remaining > 0) {
       await this.removeButtons.first().click();
-      await this.page.waitForTimeout(500);
+      await expect(this.removeButtons).toHaveCount(remaining - 1, { timeout: 20000 });
+      remaining -= 1;
     }
   }
 

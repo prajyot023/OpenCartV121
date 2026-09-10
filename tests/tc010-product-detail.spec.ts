@@ -30,7 +30,7 @@ test.describe('TC010: Product Detail Page Suite', () => {
 
     // Check for Availability text
     const availText = page.locator('//li[contains(text(),"Availability")]');
-    expect(await availText.count()).toBeGreaterThanOrEqual(0); // May or may not exist for all products
+    expect(await availText.count()).toBeGreaterThanOrEqual(1);
   });
 
   test('should display Description tab with content', async ({

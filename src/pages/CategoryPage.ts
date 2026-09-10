@@ -100,19 +100,26 @@ export class CategoryPage extends BasePage {
   }
 
   /**
-   * Change sort order via dropdown
+   * Change sort order via dropdown, e.g. 'Name (A - Z)'.
+   *
+   * Each option's value is a full URL that the page assigns to `location`, so wait for
+   * that navigation rather than for a load state that can resolve against the old page.
    */
-  async sortBy(value: string): Promise<void> {
-    await this.sortByDropdown.selectOption(value);
-    await this.page.waitForLoadState('domcontentloaded');
+  async sortBy(label: string): Promise<void> {
+    await Promise.all([
+      this.page.waitForURL(/[?&]sort=/, { timeout: 30000 }),
+      this.sortByDropdown.selectOption({ label }),
+    ]);
   }
 
   /**
-   * Change items per page via dropdown
+   * Change items per page via dropdown, e.g. '25'
    */
-  async setItemsPerPage(value: string): Promise<void> {
-    await this.showLimitDropdown.selectOption(value);
-    await this.page.waitForLoadState('domcontentloaded');
+  async setItemsPerPage(label: string): Promise<void> {
+    await Promise.all([
+      this.page.waitForURL(/[?&]limit=/, { timeout: 30000 }),
+      this.showLimitDropdown.selectOption({ label }),
+    ]);
   }
 
   /**

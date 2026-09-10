@@ -85,8 +85,8 @@ test.describe('TC017: Gift Certificate / Voucher Suite', () => {
       agreeTerms: true,
     });
 
-    // Verify success alert
-    const isSuccess = await voucherPage.isSuccessAlertDisplayed();
+    // A valid submit lands on route=account/voucher/success
+    const isSuccess = await voucherPage.isPurchaseSuccessful();
     expect(isSuccess).toBe(true);
   });
 });

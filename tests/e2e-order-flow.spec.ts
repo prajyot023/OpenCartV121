@@ -8,6 +8,7 @@ test.describe('End-to-End Customer Journey Suite', () => {
     searchPage,
     cartPage,
     myAccountPage,
+    page,
   }) => {
     // -------------------------------------------------------------
     // Step 1: Open Storefront & Register New Customer
@@ -69,9 +70,10 @@ test.describe('End-to-End Customer Journey Suite', () => {
 
     // On TutorialsNinja demo store, inventory is flagged as out of stock (***)
     // which OpenCart validates by displaying warning and keeping user on cart,
-    // or routing to checkout if stock allows.
-    const currentUrl = cartPage.getUrl();
-    expect(currentUrl).toMatch(/route=checkout\/(cart|checkout)/);
+    // or routing to checkout if stock allows. Wait for that navigation to land before
+    // reading the URL, otherwise this still reads the cart page it started on.
+    await page.waitForURL(/route=checkout\/(cart|checkout)/, { timeout: 30000 });
+    expect(cartPage.getUrl()).toMatch(/route=checkout\/(cart|checkout)/);
 
     // -------------------------------------------------------------
     // Step 7: Verify Account Order History

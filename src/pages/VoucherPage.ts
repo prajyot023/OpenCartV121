@@ -16,7 +16,7 @@ export class VoucherPage extends BasePage {
   readonly agreeCheckbox: Locator;
   readonly continueButton: Locator;
   readonly fieldErrors: Locator;
-  readonly successAlert: Locator;
+  readonly successMessage: Locator;
   readonly warningAlert: Locator;
 
   constructor(page: Page) {
@@ -35,7 +35,7 @@ export class VoucherPage extends BasePage {
     this.agreeCheckbox = page.locator('input[type="checkbox"][name="agree"]');
     this.continueButton = page.locator('#content form input.btn-primary');
     this.fieldErrors = page.locator('.text-danger');
-    this.successAlert = page.locator('.alert.alert-success');
+    this.successMessage = page.locator('#content').getByText('Thank you for purchasing a gift certificate').first();
     this.warningAlert = page.locator('.alert.alert-danger');
   }
 
@@ -92,12 +92,16 @@ export class VoucherPage extends BasePage {
   }
 
   /**
-   * Check if success message is visible after submitting voucher
+   * Check if the gift certificate was purchased successfully.
+   *
+   * A valid submit redirects to route=account/voucher/success and renders the
+   * confirmation as page copy. OpenCart shows no success alert banner here.
    */
-  async isSuccessAlertDisplayed(): Promise<boolean> {
+  async isPurchaseSuccessful(): Promise<boolean> {
     try {
-      await this.successAlert.waitFor({ state: 'visible', timeout: 5000 });
-      return await this.successAlert.isVisible();
+      await this.page.waitForURL(/route=account\/voucher\/success/, { timeout: 15000 });
+      await this.successMessage.waitFor({ state: 'visible', timeout: 10000 });
+      return true;
     } catch {
       return false;
     }

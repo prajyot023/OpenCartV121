@@ -46,9 +46,10 @@ test.describe('TC018: Product Returns Suite', () => {
     // Submit empty form
     await returnsPage.submitButton.click();
 
-    // Verify validation errors appear for mandatory fields
-    const errorCount = await returnsPage.getValidationErrorCount();
-    expect(errorCount).toBeGreaterThan(0);
+    // The form posts and re-renders with the field errors, so wait for the first one
+    // instead of counting before the round trip has landed.
+    await expect(returnsPage.fieldErrors.first()).toBeVisible();
+    expect(await returnsPage.getValidationErrorCount()).toBeGreaterThan(0);
   });
 
   test('should submit valid return form successfully', async ({

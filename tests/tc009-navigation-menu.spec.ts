@@ -24,9 +24,9 @@ test.describe('TC009: Top Navigation Menu Suite', () => {
   });
 
   test('should show dropdown sub-categories for Desktops', async ({ page }) => {
-    // Hover over Desktops to reveal dropdown
+    // Click Desktops to reveal dropdown (click is more reliable than hover in headless)
     const desktopsMenu = page.locator('.navbar-nav > li > a:has-text("Desktops")');
-    await desktopsMenu.hover();
+    await desktopsMenu.click();
 
     // Wait for dropdown to appear
     const dropdown = page.locator('.navbar-nav > li:has(> a:has-text("Desktops")) .dropdown-menu');
@@ -39,12 +39,13 @@ test.describe('TC009: Top Navigation Menu Suite', () => {
 
     expect(trimmed).toContain('PC (0)');
     expect(trimmed).toContain('Mac (1)');
-    expect(trimmed.some(t => t.includes('Show All Desktops'))).toBe(true);
+    // The store renders this link with no space before the category name
+    expect(trimmed).toContain('Show AllDesktops');
   });
 
   test('should show dropdown sub-categories for Laptops & Notebooks', async ({ page }) => {
     const laptopsMenu = page.locator('.navbar-nav > li > a:has-text("Laptops & Notebooks")');
-    await laptopsMenu.hover();
+    await laptopsMenu.click();
 
     const dropdown = page.locator('.navbar-nav > li:has(> a:has-text("Laptops & Notebooks")) .dropdown-menu');
     await expect(dropdown).toBeVisible({ timeout: 5000 });
@@ -55,18 +56,22 @@ test.describe('TC009: Top Navigation Menu Suite', () => {
 
     expect(trimmed).toContain('Macs (0)');
     expect(trimmed).toContain('Windows (0)');
-    expect(trimmed.some(t => t.includes('Show All Laptops'))).toBe(true);
+    // The store renders this link with no space before the category name
+    expect(trimmed).toContain('Show AllLaptops & Notebooks');
   });
 
   test('should navigate to Desktops category page when clicking "Show All Desktops"', async ({ page }) => {
     const desktopsMenu = page.locator('.navbar-nav > li > a:has-text("Desktops")');
-    await desktopsMenu.hover();
+    await desktopsMenu.click();
 
-    const showAll = page.locator('.navbar-nav .dropdown-menu a:has-text("Show All Desktops")');
+    const dropdown = page.locator('.navbar-nav > li:has(> a:has-text("Desktops")) .dropdown-menu');
+    await expect(dropdown).toBeVisible({ timeout: 5000 });
+
+    // The "Show All" link text is "Show AllDesktops" (no space)
+    const showAll = dropdown.locator('a').filter({ hasText: 'Show All' }).last();
     await showAll.click();
 
-    await page.waitForLoadState('domcontentloaded');
-    expect(page.url()).toContain('route=product/category');
+    await page.waitForURL(/route=product\/category/, { timeout: 30000 });
     expect(page.url()).toContain('path=20');
   });
 
@@ -88,7 +93,7 @@ test.describe('TC009: Top Navigation Menu Suite', () => {
 
   test('should show dropdown for MP3 Players with sub-categories', async ({ page }) => {
     const mp3Menu = page.locator('.navbar-nav > li > a:has-text("MP3 Players")');
-    await mp3Menu.hover();
+    await mp3Menu.click();
 
     const dropdown = page.locator('.navbar-nav > li:has(> a:has-text("MP3 Players")) .dropdown-menu');
     await expect(dropdown).toBeVisible({ timeout: 5000 });

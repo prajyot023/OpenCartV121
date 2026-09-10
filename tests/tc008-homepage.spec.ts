@@ -87,6 +87,7 @@ test.describe('TC008: Homepage Features Suite', () => {
     const checkoutLink = page.locator('//a[@title="Checkout"]');
     await checkoutLink.click();
     await page.waitForLoadState('domcontentloaded');
-    expect(page.url()).toContain('route=checkout/checkout');
+    // Checkout redirects to cart when cart is empty, or to checkout when items exist
+    expect(page.url()).toMatch(/route=checkout\/(checkout|cart)/);
   });
 });

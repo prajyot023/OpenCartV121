@@ -27,8 +27,22 @@ export class ProductPage extends BasePage {
     await this.navigateTo(`index.php?route=product/product&product_id=${productId}`);
   }
 
+  /**
+   * Set the product quantity.
+   *
+   * This field's change handler fires OpenCart's getRecurringDescription request, whose
+   * success callback removes every `.alert-dismissible` on the page. The handler only
+   * runs once the field loses focus, so without an explicit blur it fires on the click
+   * that adds to cart and races the add-to-cart response, intermittently wiping the
+   * success banner. Blur here and let the request settle first.
+   */
   async setQuantity(qty: number): Promise<void> {
+    const recurringLookup = this.page
+      .waitForResponse(res => res.url().includes('route=product/product/getRecurringDescription'), { timeout: 10000 })
+      .catch(() => null);
     await this.productQuantityInput.fill(qty.toString());
+    await this.productQuantityInput.blur();
+    await recurringLookup;
   }
 
   async clickAddToCart(): Promise<void> {
@@ -36,7 +50,7 @@ export class ProductPage extends BasePage {
   }
 
   async getSuccessAlertMessage(): Promise<string> {
-    await this.successAlert.waitFor({ state: 'visible', timeout: 8000 });
+    await this.successAlert.waitFor({ state: 'visible', timeout: 15000 });
     return (await this.successAlert.textContent())?.trim() || '';
   }
 }

@@ -53,6 +53,7 @@ export class CheckoutPage extends BasePage {
   readonly paymentWarningAlert: Locator;
 
   // Step 6: Confirm Order
+  readonly orderSummaryTable: Locator;
   readonly confirmOrderBtn: Locator;
   readonly orderSuccessHeader: Locator;
 
@@ -98,6 +99,7 @@ export class CheckoutPage extends BasePage {
     this.paymentWarningAlert = page.locator('#collapse-payment-method .alert-danger, #collapse-payment-method .alert-warning');
 
     // Step 6
+    this.orderSummaryTable = page.locator('#collapse-checkout-confirm table');
     this.confirmOrderBtn = page.locator('#button-confirm');
     this.orderSuccessHeader = page.locator('//h1[normalize-space()="Your order has been placed!"]');
   }
@@ -110,7 +112,7 @@ export class CheckoutPage extends BasePage {
    * Step 2: Fill billing information for a registered customer
    */
   async fillRegisteredBillingDetails(address: CheckoutBillingAddress): Promise<void> {
-    await this.page.waitForSelector('#collapse-payment-address.in, #input-payment-firstname:visible, input[name="payment_address"]:visible', { timeout: 10000 });
+    await this.page.waitForSelector('#collapse-payment-address.in, #input-payment-firstname:visible, input[name="payment_address"]:visible', { timeout: 20000 });
 
     if (await this.newPaymentRadio.isVisible()) {
       await this.newPaymentRadio.check();
@@ -134,7 +136,7 @@ export class CheckoutPage extends BasePage {
    * Step 3: Confirm Delivery Address if shown
    */
   async confirmDeliveryAddress(): Promise<void> {
-    await this.page.waitForSelector('#button-shipping-address:visible, #button-shipping-method:visible', { timeout: 10000 });
+    await this.page.waitForSelector('#button-shipping-address:visible, #button-shipping-method:visible', { timeout: 20000 });
     if (await this.deliveryContinueBtn.isVisible()) {
       await this.deliveryContinueBtn.click();
     }
@@ -144,7 +146,7 @@ export class CheckoutPage extends BasePage {
    * Step 4: Confirm Delivery Method
    */
   async confirmDeliveryMethod(): Promise<void> {
-    await this.shippingMethodContinueBtn.waitFor({ state: 'visible', timeout: 10000 });
+    await this.shippingMethodContinueBtn.waitFor({ state: 'visible', timeout: 20000 });
     await this.shippingMethodContinueBtn.click();
   }
 
@@ -152,7 +154,7 @@ export class CheckoutPage extends BasePage {
    * Step 5: Confirm Payment Method (with or without terms)
    */
   async confirmPaymentMethod(agreeTerms: boolean = true): Promise<void> {
-    await this.termsCheckbox.waitFor({ state: 'visible', timeout: 10000 });
+    await this.termsCheckbox.waitFor({ state: 'visible', timeout: 20000 });
     if (agreeTerms) {
       if (!(await this.termsCheckbox.isChecked())) {
         await this.termsCheckbox.check();
@@ -166,10 +168,14 @@ export class CheckoutPage extends BasePage {
   }
 
   /**
-   * Step 6: Place order
+   * Step 6: Place order.
+   *
+   * The confirm panel and its order summary are fetched by AJAX once the payment method
+   * is accepted, so wait for that table before reaching for the confirm button.
    */
   async placeOrder(): Promise<void> {
-    await this.confirmOrderBtn.waitFor({ state: 'visible', timeout: 10000 });
+    await this.orderSummaryTable.waitFor({ state: 'visible', timeout: 30000 });
+    await this.confirmOrderBtn.waitFor({ state: 'visible', timeout: 30000 });
     await this.confirmOrderBtn.click();
   }
 

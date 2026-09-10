@@ -10,6 +10,7 @@ export class ContactPage extends BasePage {
   readonly submitButton: Locator;
   readonly fieldErrors: Locator;
   readonly successHeading: Locator;
+  readonly successContinueButton: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -21,6 +22,7 @@ export class ContactPage extends BasePage {
     this.submitButton = page.locator('#content form input.btn-primary');
     this.fieldErrors = page.locator('.text-danger');
     this.successHeading = page.locator('//h1[normalize-space()="Contact Us"]');
+    this.successContinueButton = page.locator('#content .buttons a.btn-primary');
   }
 
   async open(): Promise<void> {
@@ -45,17 +47,18 @@ export class ContactPage extends BasePage {
   }
 
   /**
-   * Check if contact form submission was successful
-   * (redirects to success page with "Your enquiry has been successfully sent" heading)
+   * Check if contact form submission was successful.
+   *
+   * A successful submit redirects to route=information/contact/success, which renders
+   * only the "Contact Us" heading and a Continue button. There is no success paragraph
+   * or alert banner to match on.
    */
   async isSuccessMessageDisplayed(): Promise<boolean> {
     try {
-      const successMsg = this.page.locator('//h1[contains(text(),"Contact Us")]');
-      await successMsg.waitFor({ state: 'visible', timeout: 5000 });
-      // Check for the success content text
-      const content = this.page.locator('#content p');
-      const text = await content.first().textContent();
-      return text?.includes('Your enquiry has been successfully sent') || false;
+      await this.page.waitForURL(/route=information\/contact\/success/, { timeout: 15000 });
+      await this.successHeading.waitFor({ state: 'visible', timeout: 10000 });
+      await this.successContinueButton.waitFor({ state: 'visible', timeout: 10000 });
+      return true;
     } catch {
       return false;
     }
